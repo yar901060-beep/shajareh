@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>شجره‌نامه خاندان یاراحمدزائی</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#f3f5f1;color:#20352a;font-family:Tahoma,Arial,sans-serif}header{background:#24583e;color:#fff;text-align:center;padding:20px}h1{margin:0 0 6px}.sub{font-size:13px;color:#dce9df}.toolbar{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;padding:12px}button,.btn{border:0;border-radius:9px;padding:9px 13px;background:#24583e;color:white;cursor:pointer;font:inherit}button.alt,.btn.alt{background:#e5ece6;color:#244a35;border:1px solid #cbd8ce}button.red{background:#a33d35}main{max-width:100%;padding:0 12px 30px}.tree-shell{background:white;border:1px solid #dce4dc;border-radius:14px;overflow:auto;padding:24px 20px;min-height:400px;direction:ltr}.tree{display:inline-block;min-width:100%;width:max-content;transform-origin:top center;direction:rtl}.tree ul{padding:28px 0 0;position:relative;display:flex;justify-content:center;align-items:flex-start;margin:0;direction:ltr;width:max-content;min-width:100%}
+.tree li{list-style:none;text-align:center;position:relative;padding:28px 7px 0;min-width:120px;direction:rtl}
+.tree li:before,.tree li:after{content:'';position:absolute;top:0;width:50%;height:28px;border-top:2px solid #8aa997}
+.tree li:before{right:50%}
+.tree li:after{left:50%;border-left:2px solid #8aa997}
+.tree li:only-child:before,.tree li:only-child:after{display:none}
+.tree li:only-child{padding-top:0}
+.tree li:first-child:before{border-top:0}
+.tree li:last-child:after{border:0}
+.tree li:last-child:before{border-right:2px solid #8aa997;border-radius:0 7px 0 0}
+.tree li:first-child:after{border-radius:7px 0 0 0}
+.tree ul ul:before{content:'';position:absolute;top:0;left:50%;border-left:2px solid #8aa997;width:0;height:28px}.node{display:inline-flex;flex-direction:column;align-items:center;gap:5px;min-width:116px;max-width:170px;padding:9px;border:1px solid #b9cdbd;border-radius:11px;background:#f7fbf7;color:#20352a;box-shadow:0 2px 5px #20352a12;cursor:pointer;direction:rtl}.node:hover,.node.selected{border:2px solid #bd9447;background:#fff9e9}.node img{width:48px;height:48px;border-radius:50%;object-fit:cover}.node strong{font-size:13px}.node small{font-size:11px;color:#63766a}.detail,.panel,.help{background:#fff;border:1px solid #dce4dc;border-radius:14px;padding:15px;margin:14px 0}.detailgrid{display:flex;gap:15px;align-items:flex-start}.detail img{width:110px;height:110px;object-fit:cover;border-radius:12px}.muted{color:#68796e;font-size:12px}.fields{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:8px;margin-top:10px}.field{background:#f3f7f3;border-radius:8px;padding:9px;font-size:13px}.field b{display:block;color:#65766a;font-size:11px;margin-bottom:4px}.formgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:8px}label{font-size:12px;display:block;margin:8px 0 4px}input,select,textarea{width:100%;padding:9px;border:1px solid #cbd8ce;border-radius:8px;font:inherit}textarea{min-height:70px}.hide{display:none!important}#scale{width:140px;vertical-align:middle}.legend{font-size:12px;color:#607568;text-align:center}@media(max-width:600px){.tree-shell{padding:15px 8px}.node{min-width:95px}.tree li{min-width:102px;padding-left:4px;padding-right:4px}.detailgrid{display:block}}
+@media print{.toolbar,.panel,.help{display:none!important}.tree-shell{overflow:visible;border:0}.tree{transform:none!important}body{background:white}}
+.status{text-align:center;font-size:12px;color:#607568;padding:6px}
+.status.online{color:#2e7d32}.status.offline{color:#c62828}
+</style>
+</head>
+<body>
+<header>
+  <h1>شجره‌نامه خاندان یاراحمدزائی</h1>
+  <div class="sub">نسخه آنلاین • تغییرات برای همه به‌روز می‌شود</div>
+</header>
+
+<div class="toolbar">
+  <button id="adminBtn">ورود به مدیریت</button>
+  <button class="alt" id="backupBtn">پشتیبان اطلاعات</button>
+  <button class="alt" id="viewerBtn">ساخت نسخه فقط نمایش</button>
+  <button class="alt" onclick="window.print()">چاپ</button>
+  <span style="align-self:center;color:#345">
+    بزرگ‌نمایی 
+    <button class="alt" id="minus">−</button>
+    <input id="scale" type="range" min=".45" max="1.6" step=".05" value="1">
+    <button class="alt" id="plus">+</button>
+    <button class="alt" id="reset">۱۰۰٪</button>
+  </span>
+</div>
+
+<div class="status" id="status">در حال اتصال به سرور...</div>
+
+<main>
+  <div class="tree-shell"><div class="tree" id="tree"></div></div>
+  <div class="legend">در موبایل برای دیدن شاخه‌های کناری، درخت را به چپ و راست بکشید؛ با نوار بالا اندازه درخت را تغییر دهید.</div>
+  
+  <section class="detail" id="detail">برای دیدن مشخصات، روی نام یک نفر کلیک کنید.</section>
+  
+  <section class="panel hide" id="admin">
+    <h3>مدیریت افراد</h3>
+    <p class="muted">برای هر فرد، پدر و مادر را تعیین کنید تا در شاخه درست قرار بگیرد. جابه‌جایی واقعی شاخه با تغییر نسبت پدر/مادر انجام می‌شود.</p>
+    <div class="formgrid">
+      <div><label>نام و نام خانوادگی</label><input id="name"></div>
+      <div><label>نسبت / عنوان</label><input id="role"></div>
+      <div><label>پدر</label><select id="father"></select></div>
+      <div><label>مادر</label><select id="mother"></select></div>
+      <div><label>همسر</label><input id="spouse"></div>
+      <div><label>تاریخ تولد</label><input id="birth"></div>
+      <div><label>محل زندگی</label><input id="place"></div>
+      <div><label>عکس</label><input id="photo" type="file" accept="image/*"></div>
+    </div>
+    <label>شرح زندگی و اطلاعات دیگر</label>
+    <textarea id="notes"></textarea>
+    <div class="toolbar">
+      <button id="save">ذخیره</button>
+      <button class="alt" id="new">فرد جدید</button>
+      <button class="red" id="del">حذف فرد انتخاب‌شده</button>
+    </div>
+  </section>
+  
+  <div class="help muted">
+    این نسخه آنلاین است. تغییرات شما بلافاصله برای همه کسانی که لینک را باز کرده‌اند به‌روز می‌شود.
+    فقط کسی که رمز مدیریت را بداند می‌تواند ویرایش کند.
+  </div>
+</main>
+
+<!-- Firebase SDK -->
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-database-compat.js"></script>
+
+<script>
+// ==================== Firebase Config ====================
+const firebaseConfig = {
+  apiKey: "AIzaSyCsMg2qepRzawDwnD7A0tK1dBsGVQoIqcQ",
+  authDomain: "yarahmadzai-tree.firebaseapp.com",
+  databaseURL: "https://yarahmadzai-tree-default-rtdb.firebaseio.com",
+  projectId: "yarahmadzai-tree",
+  storageBucket: "yarahmadzai-tree.firebasestorage.app",
+  messagingSenderId: "694130809825",
+  appId: "1:694130809825:web:188caa783cca710e8890a0",
+  measurementId: "G-QLSDPJZT1E"
+};
+
+firebase.initializeApp(firebaseConfig);
+const db = firebase.database();
+const peopleRef = db.ref('people');
+
+// ==================== Initial Data ====================
+const initial = [
+  {"id":"saadi0","name":"سعدی","role":"جد خاندان","father":"","mother":"","spouse":"","birth":"","place":"","notes":"نیاکان خاندان؛ مطابق تصویر.","photo":""},
+  {"id":"sabaki","name":"صابکی","role":"جد خاندان","father":"saadi0","mother":"","spouse":"","birth":"","place":"","notes":"نام مطابق تصویر؛ املای آن قابل اصلاح است.","photo":""},
+  {"id":"malek0","name":"ملک","role":"جد خاندان","father":"sabaki","mother":"","spouse":"","birth":"","place":"","notes":"نام مطابق تصویر.","photo":""},
+  {"id":"mirkhan","name":"میرخان","role":"جد خاندان","father":"malek0","mother":"","spouse":"","birth":"","place":"","notes":"نام مطابق تصویر.","photo":""},
+  {"id":"gholam","name":"غلام‌حسین","role":"فرزند میرخان","father":"mirkhan","mother":"","spouse":"","birth":"","place":"","notes":"پدر محمد؛ طبق توضیح شما.","photo":""},
+  {"id":"arzhad","name":"ارژاد","role":"فرزند میرخان","father":"mirkhan","mother":"","spouse":"","birth":"","place":"","notes":"نام از تصویر؛ املای آن را بررسی کنید.","photo":""},
+  {"id":"ali","name":"علی","role":"فرزند میرخان","father":"mirkhan","mother":"","spouse":"","birth":"","place":"","notes":"نام مطابق تصویر.","photo":""},
+  {"id":"ghaem","name":"قائم‌فراری","role":"فرزند میرخان","father":"mirkhan","mother":"","spouse":"","birth":"","place":"","notes":"خوانش نام از تصویر تقریبی است.","photo":""},
+  {"id":"zeynab","name":"زینب","role":"فرزند میرخان","father":"mirkhan","mother":"","spouse":"","birth":"","place":"","notes":"نام مطابق تصویر.","photo":""},
+  {"id":"mohammad","name":"محمد","role":"فرزند غلام‌حسین / پدربزرگ","father":"gholam","mother":"","spouse":"درختان حسن‌زهی","birth":"","place":"","notes":"پدربزرگ خاندان یاراحمدزائی؛ پدر احمد و عموهای ثبت‌شده.","photo":""},
+  {"id":"mehrkhatun","name":"مهرخاتون","role":"نام درج‌شده در تصویر؛ همسر مرادعلی","father":"","mother":"","spouse":"مرادعلی","birth":"","place":"","notes":"جایگاه خانوادگی دقیق نیازمند تأیید است.","photo":""},
+  {"id":"madar","name":"مادر دادا و غلام","role":"نام/عبارت درج‌شده در تصویر","father":"","mother":"","spouse":"","birth":"","place":"","notes":"عبارت در تصویر واضح نیست؛ نسبت دقیق را مشخص کنید.","photo":""},
+  {"id":"moradali","name":"مرادعلی","role":"فرزند ارژاد","father":"arzhad","mother":"","spouse":"مهرخاتون","birth":"","place":"","notes":"مطابق تصویر.","photo":""},
+  {"id":"vazarad","name":"وازراد","role":"فرزند ارژاد","father":"arzhad","mother":"","spouse":"","birth":"","place":"","notes":"املای نام از تصویر تقریبی است.","photo":""},
+  {"id":"mollamastian","name":"ملا مستیان","role":"فرزند مرادعلی","father":"moradali","mother":"","spouse":"","birth":"","place":"","notes":"مطابق تصویر؛ املای نام قابل اصلاح.","photo":""},
+  {"id":"garanbibi","name":"گران‌بی‌بی","role":"فرزند مرادعلی","father":"moradali","mother":"","spouse":"","birth":"","place":"","notes":"مطابق تصویر.","photo":""},
+  {"id":"mollasafar","name":"ملا صفر","role":"فرزند مرادعلی","father":"moradali","mother":"","spouse":"","birth":"","place":"","notes":"مطابق تصویر.","photo":""},
+  {"id":"saadi1","name":"سعدی","role":"فرزند وازراد","father":"vazarad","mother":"","spouse":"","birth":"","place":"","notes":"از جد سعدی بالای شجره جداست.","photo":""},
+  {"id":"karim","name":"کریم","role":"فرزند وازراد","father":"vazarad","mother":"","spouse":"","birth":"","place":"","notes":"مطابق تصویر.","photo":""},
+  {"id":"elm","name":"علم","role":"فرزند وازراد","father":"vazarad","mother":"","spouse":"","birth":"","place":"","notes":"مطابق تصویر.","photo":""},
+  {"id":"khanbibi","name":"خان‌بی‌بی","role":"فرزند وازراد (جایگاه موقت)","father":"vazarad","mother":"","spouse":"","birth":"","place":"","notes":"جایگاه از روی خطوط تصویر برداشت شده؛ قابل اصلاح.","photo":""},
+  {"id":"nazar","name":"نظر","role":"فرزند علی","father":"ali","mother":"","spouse":"","birth":"","place":"","notes":"مطابق تصویر.","photo":""},
+  {"id":"adnan","name":"عدنان","role":"فرزند علی","father":"ali","mother":"","spouse":"","birth":"","place":"","notes":"مطابق تصویر.","photo":""},
+  {"id":"eisa","name":"عیسی","role":"فرزند علی","father":"ali","mother":"","spouse":"","birth":"","place":"","notes":"مطابق تصویر.","photo":""},
+  {"id":"kaltoon","name":"کلتون","role":"فرزند علی","father":"ali","mother":"","spouse":"","birth":"","place":"","notes":"خوانش نام از تصویر تقریبی است.","photo":""},
+  {"id":"darakhtan","name":"درختان حسن‌زهی","role":"مادربزرگ","father":"","mother":"","spouse":"محمد","birth":"","place":"","notes":"مادربزرگ خانواده.","photo":""},
+  {"id":"ahmad","name":"احمد یاراحمدزائی","role":"پدر","father":"mohammad","mother":"darakhtan","spouse":"زبیده حسن‌زهی","birth":"","place":"","notes":"فرزند محمد و درختان حسن‌زهی.","photo":""},
+  {"id":"zobeydeh","name":"زبیده حسن‌زهی","role":"مادر","father":"","mother":"","spouse":"احمد یاراحمدزائی","birth":"","place":"","notes":"مادر خانواده.","photo":""},
+  {"id":"jalal","name":"جلال یاراحمدزائی","role":"عمو","father":"mohammad","mother":"darakhtan","spouse":"","birth":"","place":"","notes":"برادر احمد؛ طبق گفته شما.","photo":""},
+  {"id":"mahmoud","name":"محمود یاراحمدزائی","role":"عمو","father":"mohammad","mother":"darakhtan","spouse":"","birth":"","place":"","notes":"برادر احمد؛ طبق گفته شما.","photo":""},
+  {"id":"khanmohammad","name":"خان‌محمد","role":"عمو","father":"mohammad","mother":"darakhtan","spouse":"","birth":"","place":"","notes":"برادر احمد؛ طبق گفته شما.","photo":""},
+  {"id":"mohammadyousef","name":"محمد یوسف","role":"عمو","father":"mohammad","mother":"darakhtan","spouse":"","birth":"","place":"","notes":"برادر احمد؛ طبق گفته شما.","photo":""},
+  {"id":"faghir","name":"فقیرمحمد","role":"عمو","father":"mohammad","mother":"darakhtan","spouse":"","birth":"","place":"","notes":"برادر احمد؛ طبق گفته شما.","photo":""},
+  {"id":"malekmohammad","name":"ملک‌محمد","role":"عمو","father":"mohammad","mother":"darakhtan","spouse":"","birth":"","place":"","notes":"برادر احمد؛ طبق گفته شما.","photo":""}
+];
+
+// ==================== App State ====================
+let people = [];
+let selected = null;
+let admin = false;
+let zoom = 1;
+let isOnline = false;
+
+const $ = id => document.getElementById(id);
+const esc = s => String(s||'').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+// ==================== Status ====================
+function setStatus(msg, online = true) {
+  const el = $('status');
+  el.textContent = msg;
+  el.className = 'status ' + (online ? 'online' : 'offline');
+}
+
+// ==================== Save / Load ====================
+function saveData() {
+  return peopleRef.set(people)
+    .then(() => {
+      setStatus('ذخیره شد • همه می‌بینند', true);
+      setTimeout(() => setStatus('آنلاین • متصل به سرور', true), 2000);
+    })
+    .catch(err => {
+      console.error(err);
+      setStatus('خطا در ذخیره: ' + err.message, false);
+      alert('خطا در ذخیره روی سرور. اینترنت را چک کنید.');
+    });
+}
+
+// Real-time listener
+peopleRef.on('value', snapshot => {
+  const data = snapshot.val();
+  if (data && Array.isArray(data) && data.length > 0) {
+    people = data;
+    isOnline = true;
+    setStatus('آنلاین • متصل به سرور', true);
+    render();
+    if (selected) select(selected);
+  } else if (!data || (Array.isArray(data) && data.length === 0)) {
+    // First time: upload initial data
+    people = initial;
+    peopleRef.set(initial).then(() => {
+      setStatus('داده‌های اولیه بارگذاری شد', true);
+      render();
+    });
+  }
+}, err => {
+  console.error(err);
+  setStatus('خطا در اتصال به سرور', false);
+  // fallback to initial if completely offline
+  if (people.length === 0) {
+    people = initial;
+    render();
+  }
+});
+
+// ==================== Tree Rendering ====================
+function node(p) {
+  return `<li><button class="node ${selected===p.id?'selected':''}" data-id="${esc(p.id)}">${p.photo?`<img src="${p.photo}">`:'<span style="font-size:26px">👤</span>'}<strong>${esc(p.name)}</strong><small>${esc(p.role)}</small></button>${children(p.id)}</li>`;
+}
+
+function children(id) {
+  let kids = people.filter(p => p.father===id || (!p.father && p.mother===id));
+  return kids.length ? `<ul>${kids.map(node).join('')}</ul>` : '';
+}
+
+function render() {
+  let roots = people.filter(p => !p.father && !p.mother);
+  $('tree').innerHTML = `<ul>${roots.map(node).join('')}</ul>`;
+  document.querySelectorAll('[data-id]').forEach(b => b.onclick = () => select(b.dataset.id));
+  fillSelects();
+}
+
+function fillSelects() {
+  ['father','mother'].forEach(id => {
+    let old = $(id).value;
+    $(id).innerHTML = '<option value="">— انتخاب نشده —</option>' + people.map(p => `<option value="${esc(p.id)}">${esc(p.name)}</option>`).join('');
+    $(id).value = old;
+  });
+}
+
+function select(id) {
+  selected = id;
+  let p = people.find(x => x.id === id);
+  if (!p) return;
+  render();
+  $('detail').innerHTML = `<div class="detailgrid">${p.photo?`<img src="${p.photo}">`:'<div style="font-size:65px">👤</div>'}<div><h2>${esc(p.name)}</h2><div class="muted">${esc(p.role)}</div><div class="fields">${[['پدر',people.find(x=>x.id===p.father)?.name],['مادر',people.find(x=>x.id===p.mother)?.name],['همسر',p.spouse],['تولد',p.birth],['محل زندگی',p.place]].filter(x=>x[1]).map(x=>`<div class="field"><b>${x[0]}</b>${esc(x[1])}</div>`).join('')}</div><p>${esc(p.notes)}</p></div></div>`;
+  if (admin) fillForm(p);
+}
+
+function fillForm(p) {
+  ['name','role','father','mother','spouse','birth','place','notes'].forEach(k => $(k).value = p?.[k] || '');
+  $('photo').value = '';
+}
+
+function clearForm() {
+  selected = null;
+  fillForm(null);
+  render();
+}
+
+// ==================== Admin ====================
+$('adminBtn').onclick = () => {
+  if (!admin) {
+    let pass = prompt('رمز مدیریت را وارد کنید؛ بار اول رمز جدید بسازید:');
+    if (pass === null) return;
+    let old = localStorage.getItem('yara_admin_pass');
+    if (!old) {
+      if (pass.length < 4) return alert('رمز حداقل ۴ حرف باشد.');
+      localStorage.setItem('yara_admin_pass', pass);
+    } else if (pass !== old) {
+      return alert('رمز نادرست است.');
+    }
+    admin = true;
+    $('admin').classList.remove('hide');
+    $('adminBtn').textContent = 'خروج از مدیریت';
+  } else {
+    admin = false;
+    $('admin').classList.add('hide');
+    $('adminBtn').textContent = 'ورود به مدیریت';
+  }
+};
+
+$('new').onclick = clearForm;
+
+$('save').onclick = async () => {
+  if (!admin) return;
+  let name = $('name').value.trim();
+  if (!name) return alert('نام را وارد کنید.');
+  
+  let old = people.find(p => p.id === selected);
+  let photo = old?.photo || '';
+  let f = $('photo').files[0];
+  
+  if (f) {
+    if (f.size > 1400000) return alert('عکس کمتر از ۱.۴ مگابایت انتخاب کنید.');
+    photo = await new Promise(r => {
+      let fr = new FileReader();
+      fr.onload = () => r(fr.result);
+      fr.readAsDataURL(f);
+    });
+  }
+  
+  let p = {
+    id: selected || 'id' + Date.now(),
+    name,
+    role: $('role').value,
+    father: $('father').value,
+    mother: $('mother').value,
+    spouse: $('spouse').value,
+    birth: $('birth').value,
+    place: $('place').value,
+    notes: $('notes').value,
+    photo
+  };
+  
+  if (selected) {
+    people[people.findIndex(x => x.id === selected)] = p;
+  } else {
+    people.push(p);
+    selected = p.id;
+  }
+  
+  await saveData();
+  render();
+  select(selected);
+  alert('ذخیره شد و برای همه به‌روز شد.');
+};
+
+$('del').onclick = () => {
+  if (!admin || !selected) return alert('فردی را انتخاب کنید.');
+  if (!confirm('این فرد حذف شود؟ فرزندانش هم از درخت جدا می‌شوند و باید نسبتشان را دوباره تعیین کنید.')) return;
+  people = people.filter(p => p.id !== selected);
+  selected = null;
+  saveData();
+  render();
+  $('detail').textContent = 'فرد حذف شد.';
+  clearForm();
+};
+
+// ==================== Backup & Viewer ====================
+$('backupBtn').onclick = () => {
+  download(JSON.stringify(people, null, 2), 'shajareh-yarahmadzai-backup.json', 'application/json');
+};
+
+function download(data, name, type) {
+  let a = document.createElement('a');
+  let u = URL.createObjectURL(new Blob([data], {type}));
+  a.href = u;
+  a.download = name;
+  a.click();
+  setTimeout(() => URL.revokeObjectURL(u), 1000);
+}
+
+$('viewerBtn').onclick = () => {
+  let data = JSON.stringify(people).replace(/</g, '\\u003c');
+  let viewer = `<!doctype html><html lang="fa" dir="rtl"><meta charset="utf-8"><meta name="viewport" content="width=device-width"><title>شجره‌نامه یاراحمدزائی</title><body style="font-family:Tahoma;background:#f3f5f1"><h2 style="text-align:center">شجره‌نامه خاندان یاراحمدزائی</h2><div id="tree" style="overflow:auto;background:white;padding:20px"></div><div id="detail" style="padding:15px"></div><script>const people=${data};function esc(s){return String(s||'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}function node(p){return '<li><button class="node" data-id="'+esc(p.id)+'">'+(p.photo?'<img src="'+p.photo+'" width=48 height=48 style="border-radius:50%">':'👤')+'<strong>'+esc(p.name)+'</strong><br><small>'+esc(p.role)+'</small></button>'+children(p.id)+'</li>'}function children(id){let kids=people.filter(p=>p.father===id||(!p.father&&p.mother===id));return kids.length?'<ul style="display:flex;justify-content:center">'+kids.map(node).join('')+'</ul>':''}function render(){let roots=people.filter(p=>!p.father&&!p.mother);document.getElementById('tree').innerHTML='<ul style="display:flex;justify-content:center;list-style:none">'+roots.map(node).join('')+'</ul>';document.querySelectorAll('[data-id]').forEach(b=>b.onclick=()=>{let p=people.find(x=>x.id===b.dataset.id);document.getElementById('detail').innerHTML='<h3>'+esc(p.name)+'</h3><p>'+esc(p.role)+'</p><p>'+esc(p.notes)+'</p>'+(p.photo?'<img width=120 src="'+p.photo+'">':'')})}render();<\/script></body></html>`;
+  download(viewer, 'shajareh-yarahmadzai-viewer.html', 'text/html');
+};
+
+// ==================== Zoom ====================
+function setZoom(v) {
+  zoom = Math.max(.45, Math.min(1.6, v));
+  $('scale').value = zoom;
+  $('tree').style.zoom = zoom;
+}
+$('scale').oninput = e => setZoom(+e.target.value);
+$('plus').onclick = () => setZoom(zoom + .1);
+$('minus').onclick = () => setZoom(zoom - .1);
+$('reset').onclick = () => setZoom(1);
+
+// Initial render will happen when data arrives from Firebase
+</script>
+</body>
+</html>
